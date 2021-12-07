@@ -1,0 +1,8 @@
+[package]
+name = "rpn_calc"
+version = "0.1.0"
+authors = ["kujirahand"]
+description = "RPN(Reverse Polish Notatio) library"
+license = "MIT"
+edition = "2021"
+

@@ -1,0 +1,11 @@
+a = 1
+b = 1
+print a 
+print b
+for i = 1 to 30 {
+    print a + b
+    tmp = a
+    a = b
+    b = tmp + b
+}
+

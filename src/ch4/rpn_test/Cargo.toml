@@ -1,0 +1,8 @@
+[package]
+name = "rpn_test"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+rpn_calc = "0.1.0"
+

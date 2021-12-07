@@ -1,0 +1,8 @@
+[package]
+name = "web_bmi"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = "3"
+serde = "1.0"

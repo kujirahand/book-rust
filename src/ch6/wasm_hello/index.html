@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8"><body>
+<script type="module">
+  // WebAssemblyを読み込む --- (*1)
+  import init, {hello, rust_mul} from './pkg/wasm_hello.js';
+  // Promiseの仕組みでライブラリを読み込む --- (*2)
+  init().then(() => {
+    // 初期化が完了した時に実行する処理 --- (*3)
+    // 挨拶を表示
+    setTimeout(() => {
+      hello('Rust');
+    }, 300);
+    // 掛け算を実行して結果を表示 --- (*4)
+    const a = rust_mul(2000, 3);
+    document.getElementById('info').innerHTML = a;
+  });
+  </script>
+  <h1>index.html</h1><h2 id="info"></h2>
+</body></html>
+

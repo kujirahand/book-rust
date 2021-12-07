@@ -1,0 +1,8 @@
+[package]
+name = "image_ichimatu"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+image = "0.23.14"
+

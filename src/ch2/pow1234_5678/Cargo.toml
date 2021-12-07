@@ -1,0 +1,10 @@
+# プロジェクトの基本情報を以下に記述
+[package]
+name = "pow1234_5678"
+version = "0.1.0"
+edition = "2021"
+
+# 依存ライブラリを以下に記述
+[dependencies]
+num-bigint = "0.4"
+
