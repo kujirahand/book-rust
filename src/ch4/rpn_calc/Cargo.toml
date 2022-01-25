@@ -1,8 +1,13 @@
 [package]
 name = "rpn_calc"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["kujirahand"]
 description = "RPN(Reverse Polish Notatio) library"
 license = "MIT"
 edition = "2021"
+include = ["src/", "README.md"]
+homepage = "https://github.com/kujirahand/book-rust/tree/main/src/ch4/rpn_calc/README.md"
+
+[package.metadata.docs.rs]
+rustdoc-args = ["--cfg", "doc_cfg"]
 
