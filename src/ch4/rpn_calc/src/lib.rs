@@ -1,11 +1,14 @@
 // ドキュメントを記述 --- (*1)
-/// Eval RPN 
-/// # Example
-/// ```
-/// let src = String::from("1 2 + 3 * ");
-/// let a = rpn_calc::eval(src).unwrap();
-/// println!("{}", a); // →9
-/// ```
+//! # RPN Calc
+//! Reverse Polish notation (RPN) Calc.
+//! # Example
+//! ```
+//! let src = String::from("1 2 + 3 * ");
+//! let a = rpn_calc::eval(src).unwrap();
+//! println!("{}", a); // →9
+//! ```
+
+/// RPN式を計算する関数
 pub fn eval(src: String) -> Result<f64, String> {
     // 空白でトークンを区切る
     let tokens = src.split_whitespace();
@@ -39,16 +42,28 @@ pub fn eval(src: String) -> Result<f64, String> {
     Ok(stack.pop().unwrap_or(0.0))
 }
 
+/// より手軽に使う
+pub fn eval_str(src: &str) -> String {
+    match eval(String::from(src)) {
+        Ok(v) => format!("{}", v),
+        Err(e) => format!("[ERROR] {}", e),
+    }
+}
+
 // ライブラリを利用するテストを記述 --- (*4)
 #[cfg(test)]
 mod tests {
     use super::*;
     #[test]
     fn it_works() {
+        // eval を使う
         assert_eq!(eval("1 3 +".to_string()), Ok(4.0));
         assert_eq!(eval("2 3 *".to_string()), Ok(6.0));
         assert_eq!(eval("6 3 /".to_string()), Ok(2.0));
         assert_eq!(eval("6 3 - 1 -".to_string()), Ok(2.0));
+        // eval_str を使う
+        assert_eq!(eval_str("1 2 3 + +"), "6".to_string());
+        assert_eq!(eval_str("1 2 3 * +"), "7".to_string());
     }
 }
 
