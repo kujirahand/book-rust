@@ -14,7 +14,7 @@ fn main() {
         // 繰り返し加算 --- (*5)
         for line in lines {
             // 数値に変換 --- (*6)
-            let n:f64 = match line.parse() {
+            let n:f64 = match line.trim().parse() {
                 Ok(v) => v,
                 Err(_) => 0.0,
             };
