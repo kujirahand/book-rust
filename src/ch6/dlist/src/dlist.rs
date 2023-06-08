@@ -1,3 +1,4 @@
+use std::borrow::Borrow;
 use std::rc::{Rc, Weak};
 use std::cell::RefCell;
 // 双方向リストの要素一つを表す構造体 --- (*1)
@@ -24,7 +25,7 @@ impl List {
     pub fn push(&mut self, v:isize) {
         let n = List::new_node(v);
         match self.foot.take() {
-            None => {
+            None => { // 末尾がない = 初回のデータ追加処理
                 self.foot = Some(Rc::clone(&n));
                 self.head = Some(n);
             },
@@ -39,14 +40,14 @@ impl List {
     // 先頭に値を追加 --- (*5)
     pub fn unshift(&mut self, v:isize) {
         let n = List::new_node(v);
-        match self.head.take() {       
-            None => {
+        match self.head.take() {
+            None => { // 先頭がない = 初回のデータ追加処理
                 self.foot = Some(Rc::clone(&n));
                 self.head = Some(n);
             },
             Some(old_head) => {
                 old_head.borrow_mut().prev = 
-                    Some(Rc::downgrade(&old_head));
+                    Some(Rc::downgrade(&n));
                 n.borrow_mut().next = Some(old_head);
                 self.head = Some(n);
             }
